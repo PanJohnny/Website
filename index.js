@@ -1,5 +1,5 @@
 const express = require("express");
-const req = require("express/lib/request");
+const router = express.Router();
 const app = express()
 const redoc = require("redoc-express")
 const fs = require("fs");
@@ -11,7 +11,7 @@ app.get('/docs/swagger.yml', (req, res) => {
 
 // define title and specUrl location
 // serve redoc
-app.get(
+router.get(
     '/docs',
     redoc({
         title: 'API Docs',
@@ -51,4 +51,4 @@ app.get('/api/v1/ggpraha', async (req, res) => {
         )
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(process.env.PORT || 8080, () => console.log(`Example app listening on port ${port}!`))
