@@ -3,7 +3,7 @@ const app = express()
 const redoc = require("redoc-express")
 const fs = require("fs");
 
-app.get('/docs/swagger.yml', (req, res) => {
+app.get('/docs/swagger', (req, res) => {
     res.sendFile('swagger.yml', { root: '.' });
 });
 
@@ -13,7 +13,7 @@ app.get(
     '/docs',
     redoc({
         title: 'API Docs',
-        specUrl: '/docs/swagger.yml'
+        specUrl: '/docs/swagger'
     })
 );
 
@@ -50,4 +50,4 @@ app.get('/api/v1/ggpraha', async (req, res) => {
     }
 )
 
-app.listen(process.env.PORT || 8080, () => console.log(`Example app listening on port ${port}!`))
+app.listen(process.env.PORT || 8080, () => console.log(`Loaded!`))
