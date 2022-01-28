@@ -3,8 +3,8 @@ const app = express()
 const redoc = require("redoc-express")
 const fs = require("fs");
 
-app.get('/swagger', (req, res) => {
-    res.sendFile('swagger.yml', { root: '.' });
+app.get('/docs/swagger.yml', (req, res) => {
+    res.send(fs.readFileSync("./swagger.yml", "utf8"));
 });
 
 // define title and specUrl location
@@ -13,7 +13,7 @@ app.get(
     '/docs',
     redoc({
         title: 'API Docs',
-        specUrl: '/swagger'
+        specUrl: '/docs/swagger.yml'
     })
 );
 
