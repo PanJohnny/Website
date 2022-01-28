@@ -1,0 +1,58 @@
+swagger: "2.0"
+info:
+  description: "This is documentation for all apis that I made."
+  version: "1.0.0"
+  title: "Panjohnnys API"
+  contact:
+    email: "janstefanca@seznam.cz"
+host: "panjohnny.vercel.app"
+basePath: "/api/v1"
+tags:
+- name: "ggpraha"
+  description: "Get data from our GGPraha project"
+schemes:
+- "https"
+- "http"
+paths:
+  /ggpraha:
+    get:
+      tags:
+      - "ggpraha"
+      summary: "Data about location"
+      description: ""
+      operationId: "getPlace"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "header"
+        name: "id"
+        description: "ID of place"
+        required: true
+        type: "string"
+      - in: "header"
+        name: "secret"
+        description: "Secret found at place"
+        required: true
+        type: "integer"
+      responses:
+        "400":
+          description: "Bad request"
+          schema:
+            properties:
+              reason:
+                type: "string"
+        "200":
+          description: "Succes"
+          schema:
+            properties:
+              id:
+                type: "integer"
+              name:
+                type: "string"
+              description:
+                type: "string"
+              point:
+                type: "string"
+                example: "url"
