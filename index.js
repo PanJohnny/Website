@@ -2,7 +2,6 @@ const express = require("express");
 const app = express()
 const redoc = require("redoc-express")
 const fs = require("fs");
-const port = 3000
 
 app.get('/docs/swagger.yml', (req, res) => {
     res.sendFile('swagger.yml', { root: '.' });
@@ -10,7 +9,7 @@ app.get('/docs/swagger.yml', (req, res) => {
 
 // define title and specUrl location
 // serve redoc
-router.get(
+app.get(
     '/docs',
     redoc({
         title: 'API Docs',
