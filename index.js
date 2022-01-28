@@ -1,5 +1,4 @@
 const express = require("express");
-const router = express.Router();
 const app = express()
 const redoc = require("redoc-express")
 const fs = require("fs");
@@ -49,6 +48,7 @@ app.get('/api/v1/ggpraha', async (req, res) => {
                 "point": field.map_link
             }
         )
-})
+    }
+)
 
 app.listen(process.env.PORT || 8080, () => console.log(`Example app listening on port ${port}!`))
