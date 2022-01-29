@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
         res.status(400).json({ reason: "missing secret" })
         return
     }
-    const json = JSON.parse(fs.readFileSync("./data/ggpraha.json", "utf8"))
+    const json = JSON.parse(fs.readFileSync(__dirname + "/data/ggpraha.json", "utf8"))
 
     const field = json.find(item => item.lampa == id && item.secret == secret)
     if (!field) {
