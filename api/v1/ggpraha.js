@@ -4,7 +4,6 @@ const fs = require("fs");
 
 router.get("/", (req, res) => {
     res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Access-Control-Allow-Origin', '*');
     const id = req.header("id")
     const secret = req.header("secret")
     if (!id) {

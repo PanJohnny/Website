@@ -2,7 +2,10 @@ const express = require("express");
 const app = express()
 const redoc = require("redoc-express")
 const ggpraha = require(__dirname + "/api/v1/ggpraha.js")
+const cors = require("cors")
 
+
+app.use(cors())
 app.use(express.json({ extended: false }))
 app.use("/api/v1/ggpraha", ggpraha)
 
