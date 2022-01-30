@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PanJohnny</title>
+    <link rel="icon" href="/favicon.png" type="image/png">
+
+    <!-- Primary Meta Tags -->
+    <title>PanJohnny</title>
+    <meta name="title" content="PanJohnny">
+    <meta name="description" content="Programmer that likes cats and dogs.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://panjohnny.vercel.app/">
+    <meta property="og:title" content="PanJohnny">
+    <meta property="og:description" content="Programmer that likes cats and dogs.">
+    <meta property="og:image" content="/favicon.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://panjohnny.vercel.app/">
+    <meta property="twitter:title" content="PanJohnny">
+    <meta property="twitter:description" content="Programmer that likes cats and dogs.">
+    <meta property="twitter:image" content="/favicon.png">
+
+    <script src="https://kit.fontawesome.com/dd0d559326.js" crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+        .flower {
+            z-index: -3;
+            position: absolute;
+            width: 1.4em;
+            height: auto;
+        }
+
+        body {
+            -webkit-overflow-scrolling: touch;
+            background-color: #f23a8a;
+            font-family: 'Quicksand', sans-serif;
+            overflow: auto;
+            overflow-y: hidden;
+        }
+
+        .title {
+            font-size: 1.2em;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: auto;
+        }
+
+        .bubble {
+            background-color: aliceblue;
+            text-align: center;
+            border-radius: 0.5em;
+            padding: 0.5em;
+            margin: 0.5em;
+            max-width: 60%;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .u {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="flowers">
+
+    </div>
+    <script>
+        for (let index = 0; index < 20; index++) {
+            const element = document.createElement("img")
+            element.setAttribute("directionX", Math.floor(Math.random() * 2) == 0 ? -1 : 1)
+            element.setAttribute("directionY", Math.floor(Math.random() * 2) == 0 ? -1 : 1)
+            element.src = "/assets/flower.svg"
+            element.classList.add("flower")
+            element.style.top = Math.random() * window.innerHeight + "px"
+            element.style.left = Math.random() * window.innerWidth + "px"
+            document.getElementById("flowers").appendChild(element)
+        }
+
+        // every second move all flowers by 1px in their direction
+        setInterval(() => {
+            const flowers = document.getElementsByClassName("flower")
+            for (let index = 0; index < flowers.length; index++) {
+                const element = flowers[index]
+                element.style.top = parseInt(element.style.top) + parseInt(element.getAttribute("directionY")) + "px"
+                element.style.left = parseInt(element.style.left) + parseInt(element.getAttribute("directionX")) + "px"
+                // if flower gets to corner of the screen it bounces back (in opposite direction)
+                if (parseInt(element.style.top) <= 0 || parseInt(element.style.top) >= window.innerHeight - element.clientHeight) {
+                    element.setAttribute("directionY", element.getAttribute("directionY") * -1)
+                }
+                if (parseInt(element.style.left) <= 0 || parseInt(element.style.left) >= window.innerWidth - element.clientWidth) {
+                    element.setAttribute("directionX", element.getAttribute("directionX") * -1)
+                }
+            }
+        }, 10)
+
+        window.addEventListener("orientationchange", () => {
+            window.location.reload()
+        })
+    </script>
+
+
+    <div class="container">
+        <div class="title bubble">
+            <h1>PanJohnny</h1>
+            <i>Programmer that likes cats and dogs.</i>
+        </div>
+
+        <div class="bubble">
+            <p>
+                Welcome to my website! My name is John and I code stuff. You can check out my projects on <a
+                    href="https://github.com/PanJohnny"><i class="fa-brands fa-github"></i> GitHub</a>. If you want to
+                contact me you can send me an <a href="mailto:janstefanca@seznam.cz">email</a> or you can find me on <a
+                    href="https://twitter.com/panjohnny1"><i class="fa-brands fa-twitter"></i> Twitter</a>.
+            </p>
+        </div>
+
+        <div class="bubble">
+            <p>
+                More to this website will be added soon. Stay tuned! :)
+            </p>
+            <p>
+                For now you can check out docs for my apis <a href="/docs" class="u">here</a>.
+            </p>
+        </div>
+
+        <footer class="bubble" id="footer">
+            <p>
+                Icons from <a href="https://fontawesome.com/"><i class="fa-solid fa-font-awesome"></i> Font Awesome</a>
+            </p>
+        </footer>
+
+    </div>
+</body>
+
+</html>

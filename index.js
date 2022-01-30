@@ -23,8 +23,16 @@ app.get(
     })
 );
 
+app.get("/favicon.png", (req, res) => {
+    res.sendFile(__dirname + "/favicon.png")
+})
+
+app.get("/assets/flower.svg", (req, res) => {
+    res.sendFile(__dirname + "/assets/flower.svg")
+})
+
 app.get("/", (req, res) => {
-    res.redirect("/docs");
+    res.sendFile(__dirname + "/html/index.html")
 })
 
 app.listen(process.env.PORT || 8080, () => console.log(`Loaded!`))

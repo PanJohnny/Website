@@ -30,7 +30,7 @@ paths:
         name: "id"
         description: "ID of place"
         required: true
-        type: "string"
+        type: "integer"
       - in: "header"
         name: "secret"
         description: "Secret found at place"
