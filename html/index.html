@@ -40,9 +40,13 @@
             <span class="dir"></span> <span class="text"></span>
             <i class="cursor" x=0></i>
         </div>
+    </div>
 
+    <div class="phoneswitch">
+        <i class="fa-solid fa-mobile-screen-button"></i>
     </div>
     <script>
+        var phone = false;
         var directory = null;
         class Command {
             // constructor
@@ -136,7 +140,7 @@
                     if (this.children[i] instanceof Directory) {
                         children.push(this.children[i])
                         var all = this.children[i].getAllChildren()
-                        
+
                         all.forEach(element => {
                             children.push(element)
                         });
@@ -151,7 +155,7 @@
             getFiles() {
                 let files = [];
                 for (let i = 0; i < this.children.length; i++) {
-                    if(this.children[i] instanceof File){
+                    if (this.children[i] instanceof File) {
                         files.push(this.children[i]);
                     }
                 }
@@ -161,18 +165,18 @@
             generateTree(child) {
                 // generate tree with all children
                 let all;
-                if(child){
+                if (child) {
                     all = child.getAllChildren();
-                } else{
+                } else {
                     all = this.getAllChildren();
                 }
                 // generate tree to be displayed as string
                 let tree = "";
                 for (let i = 0; i < all.length; i++) {
                     var current = all[i]
-                    if(current instanceof Directory){
-                        tree += "█ "+current.getPath() + "\n";
-                    } else{
+                    if (current instanceof Directory) {
+                        tree += "█ " + current.getPath() + "\n";
+                    } else {
                         tree += "| - " + current.getName() + "\n";
                     }
                 }
@@ -266,13 +270,13 @@
                     child = directory.getChild(args[0]);
 
 
-                    if(!child)
+                    if (!child)
                         return "!Directory not found";
                 }
 
                 // loop throught all children of children recurively
                 var output = directory.generateTree(child)
-                if(output == ""){
+                if (output == "") {
                     return "!No files or directories found";
                 }
                 return output;
@@ -310,7 +314,7 @@
                 if (args.length == 0) {
                     return "!No title specified";
                 }
-                if(title=="reset") {
+                if (title == "reset") {
                     document.querySelector("title").innerHTML = "PanJohnny";
                     return " ";
                 }
@@ -332,7 +336,11 @@
             new Command("old", (args) => {
                 window.open("https://panjohnny.github.io/old", "_blank");
                 return "!Opened in a new tab\nNOTE: That page is no longer maintained and it honestly doesn't llok good, it can also contain wrong english, so please don't use it.";
-            }, "old", "Opens my old website")
+            }, "old", "Opens my old website"),
+            new Command("docs", (args) => {
+                window.open("/docs", "_blank");
+                return "Opened docs of my APIs";
+            }, "docs", "Opens documentation of my API/s")
         ];
 
         initFs()
@@ -402,7 +410,7 @@
             }
         });
 
-        document.querySelector('body').addEventListener('keydown',async function (e) {
+        document.querySelector('body').addEventListener('keydown', async function (e) {
             if (e.keyCode == 8) {
                 var cursor = document.querySelector('.cursor');
                 var line = document.querySelector('.current');
@@ -458,9 +466,29 @@
 
         });
 
-        document.querySelector("body").on("click", (e) => {
-            document.body.focus()
-        })
+        document.querySelector(".phoneswitch").addEventListener("click", (a) => {
+            var command = prompt("Enter command, use 'help' to see all commands");
+            document.querySelector('.current').querySelector('.text').innerText = command;
+
+            var line = document.querySelector('.current');
+            var cursor = document.querySelector('.cursor');
+            matchCommand()
+            line.removeChild(cursor);
+            // clone line element
+            var newLine = line.cloneNode(true);
+            // remove current class
+            line.classList.remove('current');
+            // remove cursor node from line
+            // clear text from newLine
+            newLine.querySelector('.text').innerHTML = '';
+            // append line to container
+            document.querySelector('.container').appendChild(newLine);
+            cursor.setAttribute('x', 0);
+            newLine.appendChild(cursor);
+            updateCursor()
+            updateDir()
+            window.scrollTo(0, document.body.scrollHeight);
+        });
 
         function updateCursor() {
             var cursor = document.querySelector('.cursor');
