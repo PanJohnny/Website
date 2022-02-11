@@ -452,11 +452,15 @@
                 const x = parseInt(cursor.getAttribute('x'));
                 textNode.innerText = textNode.innerHTML.substring(0, x) + text + textNode.innerHTML.substring(x);
                 cursor.setAttribute('x', x + text.length);
-                
+
                 updateCursor()
             }
 
         });
+
+        document.querySelector("body").on("click", (e) => {
+            document.body.focus()
+        })
 
         function updateCursor() {
             var cursor = document.querySelector('.cursor');
