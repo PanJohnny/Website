@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+:root {
+    --text-color: green;
+    --background-color: black;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: 'Quicksand', sans-serif;
+    color: var(--text-color);
+    font-weight: bold;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+@keyframes blink {
+    from {
+        visibility: hidden;
+    }
+
+    50% {
+        visibility: hidden;
+    }
+
+    to {
+        visibility: visible;
+    }
+}
+
+
+.cursor {
+    animation: blink infinite 2s;
+    z-index: 2;
+    position: absolute;
+}
+
+.cursor::after {
+    content: "█";
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.full {
+    width: 100%;
+    height: auto;
+}
