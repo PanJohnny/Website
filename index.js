@@ -5,6 +5,8 @@ const ggpraha = require(__dirname + "/api/v1/ggpraha.js")
 const cors = require("cors")
 const fetch = require("node-fetch")
 // add discord js webhook client
+const discordjs = require("discord.js")
+require("dotenv").config()
 
 
 app.use(cors())
@@ -48,9 +50,20 @@ app.get("/style.css", (req, res) => {
 app.post("/feedback", async (req, res) => {
     // get json in body and send it to discord webhook
     const { name, email, message } = req.body
-    const discordWebhook = 'https://discord.com/api/webhooks/941982810368004158/h-lW0ro4xLH4eYC9kM3q0i2sW_BUYKZTIAMPZYCJQ0hS4tubvgn3jwVWrmMY-YgjPQfz'
-    var client = new discord.WebHookClient()
-    
+    // create webhook client
+    const client = new discordjs.WebhookClient({id: process.env.WEBHOOK_ID, token: process.env.WEBHOOK_TOKEN})
+    // create embed
+    const embed = new discordjs.MessageEmbed()
+        .setTitle("Feedback")
+        .setColor(0x00AE86)
+        .setDescription(`New feedback arrived!`)
+        .addField("Name", name)
+        .addField("Email", email)
+        .addField("Message", message)
+        .addField("Time", new Date().toLocaleString("cs-CZ"))
+        .setTimestamp(new Date())
+    // send message and embed to discord
+    await client.send({embeds: [embed]})
 
     res.status(200).send("Feedback received")
 })

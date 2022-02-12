@@ -23,6 +23,10 @@
             toString() {
                 return `${this.usage}\n ${this.description}`;
             }
+
+            getName() {
+                return this.name;
+            }
         }
 
         class Directory {
@@ -323,7 +327,44 @@
                 // on error
 
                 return "Thank you for your feedback, I will get back to you as soon as possible.";
-            }, "feedback [name] [email] [message]", "Sends feedback to the developer")
+            }, "feedback [name] [email] [message]", "Sends feedback to the developer"),
+            new Command("email", (args) => {
+                if(args.length < 1)
+                    return "!Not enough arguments, please see usage"
+                
+                var message = "";
+                for(var i = 0; i < args.length; i++) {
+                    message += args[i] + " ";
+                }
+
+                window.open("mailto:janstefanca@seznam.cz?subject=PanJohnny%20Feedback&body=" + message, "_blank");
+            }, "email [message]", "Sends email to the developer"),
+            new Command("command", (args) => {
+                if(args.length != 1)
+                    return "!Invalid arguments"
+                
+                var output;
+                for (var i = 0; i < commands.length; i++) {
+                    if(commands[i].getName() == args[0]) {
+                        output = commands[i].toString()
+                    }
+                }
+
+                if(!output)
+                    return "!Command not found!"
+                
+                return output + "\n";
+            }, "command [name]", "Returns info about command"),
+            new Command("phone", (args) => {
+                if(document.querySelector(".phoneswitch").style.display!="inherit")
+                    document.querySelector(".phoneswitch").style.display= "inherit"
+                else
+                    document.querySelector(".phoneswitch").style.display="";
+                return "Toggled phone input icon"
+            }, "phone", "Toggles phone mode"),
+            new Command("version", (args)=>{
+                return "KiloHard Curtains [Version 13.4.6]\nMade by PanJohnny\n\nThis website is mostly client-side and the code is free to use. If you want to create a similar site or use my code please include me in credits.\nHave a nice day!"
+            },"version","Show's info about this website")
         ];
 
         initFs()
