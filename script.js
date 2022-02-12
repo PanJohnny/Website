@@ -307,7 +307,14 @@
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "/feedback", true);
                 xhr.setRequestHeader("Content-Type", "application/json");
-                xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+                xhr.withCredentials = true;
+                xhr.onreadystatechange = function() {
+                    if(xhr.readyState == 4 && xhr.status != 200) {
+                        return "!Error sending feedback";
+                    } else if(xhr.readyState == 4 && xhr.status == 200) {
+                        return "!Feedback sent";
+                    }
+                }
                 xhr.send(JSON.stringify({
                     name: name,
                     email: email,
