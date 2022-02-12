@@ -52,7 +52,7 @@ app.post("/feedback", async (req, res) => {
         discordWebhook,
         {
             method: 'post',
-            headers: {'Content-Type': 'application/json',"Access-Control-Allow-Origin": "*"},
+            headers: {'Content-Type': 'application/json',"Access-Control-Allow-Origin": "*", "Origin": "https://panjohnny.vercel.app", "Access-Control-Allow-Credentials": "true"},
             body: JSON.stringify({
                 // the username to be displayed
                 username: name,
