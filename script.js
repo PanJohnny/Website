@@ -307,6 +307,7 @@
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "/feedback", true);
                 xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
                 xhr.send(JSON.stringify({
                     name: name,
                     email: email,
