@@ -302,6 +302,7 @@
                 if(args.length < 3) {
                     return "!Not enough arguments, please see usage"
                 }
+                return "!This feauture is currently not working, please use 'email [message]' for now.
                 var name = args[0];
                 var email = args[1];
                 var message = "";
