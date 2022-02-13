@@ -1,0 +1,48 @@
+{
+    "license": {
+        "name": "MIT",
+        "url": "https://github.com/AlphaStuff/Amazor/blob/main/LICENSE"
+    },
+    "github": {
+        "name": "AlphaStuff/Amazor",
+        "url": "https://github.com/AlphaStuff/Amazor"
+    },
+    "tags": [
+        "misc",
+        "desktop",
+        "collab"
+    ],
+    "languages": [
+        "Java"
+    ],
+    "description": "Project that shows you pictures on right bottom corner of screen.",
+    "name": "Amazor",
+    "links": [
+        {
+            "name": "Release",
+            "url": "https://github.com/AlphaStuff/Amazor/releases/latest/",
+            "icon": "fa fa-download"
+        },
+        {
+            "name": "Domo Radko",
+            "icon": "fa fa-user",
+            "url": "https://github.com/DomagojRatko"
+        }
+    ],
+    "body": {
+        "categories": [
+            {
+                "name": "Concept",
+                "content": "Amazor was program originally designed to make your day better. It would show configurable pictures on login tha you can shuffle. Unfortunately we never actually got to register it to the startup. It was created by me and by Domo Radko. I did backend and he did most of the frontend. It was fun experience and we learned a lot from it."
+            },
+            {
+                "name": "Features",
+                "content": "Show cat, dog or other photos. You can also display citations? (I am not sure if I kept it in)."
+            },
+            {
+                "name": "APIs",
+                "content": "We used cataas API for cat pictures, dog ceo API for dog pictures, inspirobot api for cool inspirational photos and shibe api for shibe images and ."
+            }
+        ]
+    }
+}

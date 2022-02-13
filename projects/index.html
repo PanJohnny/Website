@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+        :root {
+            --text-color: rgb(0, 0, 0);
+            --background-color: rgb(218, 218, 218);
+            --decoration-color: rgb(67, 67, 67);
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+        }
+
+        header {
+            padding-bottom: 2em;
+            text-align: center;
+        }
+
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2em;
+        }
+
+        .project {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            padding: 0.5em;
+            border: var(--text-color) solid 1px;
+            border-radius: 0.2em;
+            position: relative;
+            width: 90%;
+            margin-bottom: 2em;
+        }
+
+        .tag {
+            background-color: pink;
+            color: var(--text-color);
+            font-size: 0.8em;
+            cursor: pointer;
+            padding: 0.2em 0.5em;
+            margin: 0.2em;
+        }
+
+        .tag:hover {
+            background-color: var(--decoration-color);
+            color: var(--background-color);
+        }
+
+        .language {
+            font-size: 0.8em;
+            border-radius: 0.2em;
+            padding: 0.2em 0.5em;
+            margin: 0.2em;
+            margin-left: 0px;
+            border-color: var(--decoration-color);
+            border: 1px solid;
+            cursor: pointer;
+        }
+
+        .languages {
+            right: 0px;
+            position: absolute;
+            top: 0px;
+            margin: 0.2em;
+        }
+
+        .tags {
+            margin: 0.2em;
+            margin-left: 0px;
+        }
+
+        .link {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="name">Projects</h1>
+        <hr>
+    </header>
+
+    <div class="projects">
+        
+    </div>
+
+    <template name="project-template">
+        <div class="project">
+            <div class="project-name link" url="">
+                <h2>Project Name</h2>
+                <hr>
+            </div>
+            <div class="languages">
+            </div>
+            <div class="tags">
+            </div>
+            <div class="project-description">
+            </div>
+        </div>
+    </template>
+
+    <template name="language-template">
+        <span class="language">JavaScript</span>
+    </template>
+
+    <template name="tag-template">
+        <span class="tag link" url="">Tag</span>
+    </template>
+
+    <script>
+        // if this url does not end with a slash, add one
+        const url = window.location.href;
+        if (url.slice(-1) !== '/') {
+            window.location.href = url + '/';
+        }
+        const injected = '{0}';
+        const json = JSON.parse(injected);
+
+        const projectTemplate = document.querySelector("template[name=project-template]");
+        const languageTemplate = document.querySelector("template[name=language-template]");
+        const tagTemplate = document.querySelector("template[name=tag-template]");
+
+        const projects = document.querySelector(".projects");
+
+        // loop through json
+        json.forEach(project => {
+            console.log(project);
+            // clone project template
+            const projectElement = projectTemplate.content.cloneNode(true);
+
+            // set project name
+            projectElement.querySelector(".project-name h2").innerHTML = project.name;
+            projectElement.querySelector(".project-name").setAttribute("url", './p-' + project.name.replace(/ /g, "-").toLowerCase());
+
+            // set project description
+            projectElement.querySelector(".project-description").innerText = project.description;
+
+            // set project tags
+            project.tags.forEach(tag => {
+                const tagElement = tagTemplate.content.cloneNode(true);
+                tagElement.querySelector(".tag").innerText = tag;
+                tagElement.querySelector(".tag").setAttribute("url", `./t-${tag}`);
+                projectElement.querySelector(".tags").appendChild(tagElement);
+            });
+
+            // set project languages
+            project.languages.forEach(language => {
+                const languageElement = languageTemplate.content.cloneNode(true);
+                languageElement.querySelector(".language").innerText = language;
+                projectElement.querySelector(".languages").appendChild(languageElement);
+            });
+
+            projects.appendChild(projectElement);
+        });
+
+        document.querySelectorAll('.link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                window.open(link.getAttribute('url'), '_blank');
+            });
+        });
+    </script>
+</body>
+
+</html>

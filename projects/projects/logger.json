@@ -1,0 +1,38 @@
+{
+    "license": {
+        "name": "MIT",
+        "url": "https://github.com/AlphaStuff/Amazor/blob/main/LICENSE"
+    },
+    "github": {
+        "name": "PanJohnny/Logger",
+        "url": "https://github.com/PanJohnny/Logger"
+    },
+    "tags": [
+        "library",
+        "jitpack"
+    ],
+    "languages": [
+        "Java"
+    ],
+    "description": "Simple logger.",
+    "name": "Logger",
+    "links": [
+        {
+            "name": "Use",
+            "url": "https://jitpack.io/#PanJohnny/Logger",
+            "icon": "fa fa-download"
+        }
+    ],
+    "body": {
+        "categories": [
+            {
+                "name": "About",
+                "content": "Small java library for logging. It is really simple and easy to use. It is inspired by log4j (but not that powerfull). This was my first experience with JitPack."
+            },
+            {
+                "name": "Usage",
+                "content": "Just import the library and use the static methods in Logger class. Everything has JavaDoc comments."
+            }
+        ]
+    }
+}

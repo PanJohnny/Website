@@ -1,0 +1,43 @@
+{
+    "license": {
+        "name": "GNU General Public License v3.0",
+        "url": "https://github.com/PanJohnny/Website/blob/main/LICENSE"
+    },
+    "github": {
+        "name": "PanJohnny/Website",
+        "url": "https://github.com/PanJohnny/Website"
+    },
+    "tags": [
+        "portfolio",
+        "website",
+        "express.js",
+        "node.js",
+        "misc"
+    ],
+    "languages": [
+        "JavaScript",
+        "HTML",
+        "(CSS if you count it as a language)"
+    ],
+    "description": "Website that serves as a portfolio for PanJohnny.",
+    "name": "Website",
+    "links": [
+        {
+            "name": "Website",
+            "url": "https://panjohnny.vercel.app/",
+            "icon": "fa fa-globe"
+        }
+    ],
+    "body": {
+        "categories": [
+            {
+                "name": "Concept",
+                "content": "The main page is designed to look like terminal. I wanted a cool portfolio site so I created this."
+            },
+            {
+                "name": "Features",
+                "content": "The website is designed to be responsive and mobile friendly. It also has a nice looking design. There are plenty of commands that you can type in the terminal. You can also look at some of my other projects. More commands and stuff will be added in the future."
+            }
+        ]
+    }
+}

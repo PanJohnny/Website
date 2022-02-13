@@ -2,6 +2,7 @@ const express = require("express");
 const app = express()
 const redoc = require("redoc-express")
 const ggpraha = require(__dirname + "/api/v1/ggpraha.js")
+const projects = require(__dirname + "/projects/projects.js")
 const cors = require("cors")
 const fetch = require("node-fetch")
 // add discord js webhook client
@@ -12,6 +13,7 @@ require("dotenv").config()
 app.use(cors())
 app.use(express.json({ extended: false }))
 app.use("/api/v1/ggpraha", ggpraha)
+app.use("/projects", projects)
 
 app.get('/docs/swagger.yml', (req, res) => {
     res.sendFile(__dirname + '/swagger.yml')

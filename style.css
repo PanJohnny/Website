@@ -86,3 +86,7 @@ a {
     user-select: none;
     /* Standard */
 }
+
+#switch {
+    cursor: pointer;
+}

@@ -1,0 +1,39 @@
+{
+    "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+    },
+    "github": {
+        "name": "PanJohnny/Project",
+        "url": "https://github.com/PanJohnny/Project"
+    },
+    "tags": [
+        "cool",
+        "tag"
+    ],
+    "languages": [
+        "JavaScript",
+        "Python"
+    ],
+    "description": "Cool project that does something cool.",
+    "name": "Project",
+    "links": [
+        {
+            "name": "Link",
+            "url": "link",
+            "icon": "fa fa-globe"
+        },
+        {
+            "name": "Link",
+            "url": "link"
+        }
+    ],
+    "body": {
+        "categories": [
+            {
+                "name": "About",
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod, nisi vel interdum consectetur, nisl nunc egestas nisi, euismod aliquam nisl nunc eget nunc. Nullam euismod, nisi vel interdum consectetur, nisl nunc egestas nisi, euismod aliquam nisl nunc eget nunc."
+            }
+        ]
+    }
+}

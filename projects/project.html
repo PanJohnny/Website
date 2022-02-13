@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name</title>
+    <script src="https://kit.fontawesome.com/dd0d559326.js" crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+        :root {
+            --text-color: rgb(0, 0, 0);
+            --background-color: rgb(218, 218, 218);
+            --decoration-color: rgb(67, 67, 67);
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+        }
+
+        header {
+            padding-bottom: 2em;
+        }
+
+        h1 {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 0px;
+        }
+
+        .tag {
+            background-color: pink;
+            color: var(--text-color);
+            font-size: 0.8em;
+            padding: 0.2em 0.5em;
+            margin: 0.2em;
+            cursor: pointer;
+        }
+
+        #info-bar {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            padding: 0.5em;
+            border: var(--text-color) solid 1px;
+            border-right: none;
+            border-radius: 0.2em;
+            right: 0;
+            position: fixed;
+            z-index: 2;
+        }
+
+        .info-bar-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 0.1em;
+            padding: 0.1em;
+            padding-bottom: 0px;
+        }
+
+        .info-bar-category {
+            margin-bottom: 0.5em;
+            padding: 0.1em;
+            padding-bottom: 0px;
+        }
+
+        .info-bar-subtitle {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .language {
+            font-size: 0.8em;
+            border-radius: 0.2em;
+            padding: 0.2em 0.5em;
+            margin: 0.2em;
+            margin-left: 0px;
+            border-color: var(--decoration-color);
+            border: 1px solid;
+            cursor: pointer;
+        }
+
+        .link {
+            cursor: pointer;
+        }
+
+        .tag:hover {
+            background-color: var(--decoration-color);
+            color: var(--background-color);
+        }
+
+        .body {
+            left: 0px;
+            position: relative;
+            width: 70%;
+        }
+
+        .category-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 0.5em;
+        }
+
+        @media screen and (max-width: 760px) {
+            #info-bar {
+                position: inherit;
+                border: var(--text-color) solid 1px;
+                border-right: 1px solid;
+            }
+
+            .body {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 id="name">Name</h1>
+        <hr>
+        <span class="description">Cool project that does something cool.</span>
+    </header>
+
+
+    <div id="info-bar">
+        <div class="info-bar-title">
+            General Information
+            <hr>
+        </div>
+        <div id="tags" class="info-bar-category">
+        </div>
+        <div class="info-bar-category" id="languages">
+            <div class="info-bar-subtitle">Languages</div>
+        </div>
+        <div class="info-bar-categoy" name="github">
+            <div class="info-bar-subtitle">Github</div>
+            <span class="link" id="github-container" url="https://github.com/PanJohnny">
+                <i class="fa fa-github"></i>
+                <span class="link-name">Project</span>
+            </span>
+        </div>
+
+        <div class="info-bar-category">
+            <div class="info-bar-subtitle">License</div>
+            <span class="link" url="/" id="license-container">
+                <i class="fa fa-file-alt"></i>
+                <span class="link-name license-name">License</span>
+            </span>
+            <div class="info-bar-category" name="links">
+                <div class="info-bar-subtitle">Links</div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="body">
+
+    </div>
+
+    <template name="category-template">
+        <div class="category" name="category-name">
+            <div class="category-title">
+            </div>
+            <div class="category-content">
+            </div>
+        </div>
+    </template>
+    <template name="link-template">
+        <div class="link" url="">
+            <i class="fa fa-link"></i>
+            <span class="link-name">
+            </span>
+        </div>
+    </template>
+    <template name="language-template">
+        <span class="language link" url="">
+        </span>
+    </template>
+    <template name="tag-template">
+        <span class="tag link" url="">
+        </span>
+    </template>
+    <script>
+        const injected = '{0}';
+        const json = JSON.parse(injected);
+        
+        // script to generate document
+        if (json.license) {
+            document.querySelector('.license-name').innerText = json.license.name;
+            document.querySelector('#license-container').setAttribute('url', json.license.url);
+        } else {
+            document.querySelector('.license-name').innerText = 'No license';
+        }
+
+        if (json.github) {
+            document.querySelector('#github-container').setAttribute('url', json.github.url);
+            document.querySelector('#github-container').querySelector('.link-name').innerText = json.github.name;
+        } else {
+            // hide element with name github
+            document.querySelector('div[name="github"]').style.display = 'none';
+        }
+
+        if (json.tags) {
+            json.tags.forEach(tag => {
+                // create tag using template
+                const tagTemplate = document.querySelector('template[name="tag-template"]');
+                const tagElement = tagTemplate.content.cloneNode(true);
+                tagElement.querySelector('.tag').innerText = tag;
+                tagElement.querySelector('.tag').setAttribute('url', './t-' + tag);
+                document.querySelector('#tags').appendChild(tagElement);
+            });
+        } else {
+            // hide element with name tags
+            document.querySelector('div[name="tags"]').style.display = 'none';
+        }
+
+        if (json.languages) {
+            json.languages.forEach(language => {
+                // create language using template
+                const languageTemplate = document.querySelector('template[name="language-template"]');
+                const languageElement = languageTemplate.content.cloneNode(true);
+                languageElement.querySelector('.language').innerText = language;
+                languageElement.querySelector('.language').setAttribute('url', './languages#' + language);
+                document.querySelector('#languages').appendChild(languageElement);
+            });
+        } else {
+            // hide element with name languages
+            document.querySelector('div[name="languages"]').style.display = 'none';
+        }
+
+        if (json.links) {
+            json.links.forEach(link => {
+                // create link using template
+                const linkTemplate = document.querySelector('template[name="link-template"]');
+                const linkElement = linkTemplate.content.cloneNode(true);
+                linkElement.querySelector('.link').setAttribute('url', link.url);
+                linkElement.querySelector('.link-name').innerText = link.name;
+                if (link.icon)
+                    linkElement.querySelector('i').setAttribute('class', link.icon);
+                document.querySelector('div[name="links"]').appendChild(linkElement);
+            });
+        } else {
+            // hide element with name links
+            document.querySelector('div[name="links"]').style.display = 'none';
+        }
+
+        if (json.description) {
+            document.querySelector('.description').innerText = json.description;
+        } else {
+            // hide element with name description
+            document.querySelector('.description').style.display = 'none';
+        }
+
+        if (json.body) {
+            json.body.categories.forEach(category => {
+                // create category using template
+                const categoryTemplate = document.querySelector('template[name="category-template"]');
+                const categoryElement = categoryTemplate.content.cloneNode(true);
+                categoryElement.querySelector('.category-title').innerText = category.name;
+                categoryElement.querySelector('.category-content').innerText = category.content;
+                categoryElement.querySelector('.category').setAttribute('name', category.name.toLowerCase());
+                document.querySelector('.body').appendChild(categoryElement);
+            });
+        } else {
+            // hide element with name body
+            document.querySelector('div[name="body"]').style.display = 'none';
+        }
+
+        if (json.name) {
+            document.querySelector('#name').innerText = json.name;
+            document.querySelector('title').innerText = json.name;
+        } else {
+            window.location.href = './';
+        }
+
+        // add event listener to all links
+        document.querySelectorAll('.link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                window.open(link.getAttribute('url'), '_blank');
+            });
+        });
+    </script>
+</body>
+
+</html>
