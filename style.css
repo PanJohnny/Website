@@ -90,3 +90,16 @@ a {
 #switch {
     cursor: pointer;
 }
+
+footer {
+    position: fixed;
+    bottom: 0px; 
+    border-top: var(--text-color) 1px solid; 
+    background-color: var(--background-color); 
+    text-align: center; 
+    width: 100%;
+}
+
+.dummy {
+    height: 2em;
+}
