@@ -16,8 +16,7 @@
     ],
     "languages": [
         "JavaScript",
-        "HTML",
-        "(CSS if you count it as a language)"
+        "HTML"
     ],
     "description": "Website that serves as a portfolio for PanJohnny.",
     "name": "Website",
