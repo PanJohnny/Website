@@ -4,13 +4,13 @@ My portfolio webiste.
 This is command line like website that I made in a few days. The pages are currently rendered cliet side using express.js. Please note that this is not a final version and I only show some of my projects.
 
 ## Endpoints
- / - command line
- /projects - projects
- /projects/p-:project - project by name
+ - / - command line
+ - /projects - projects
+ - /projects/p-:project - project by name
  params:
  - project - project name, lower case and '-' without ' '
 
- /projects/t-:tag - all projects by tag
+ - /projects/t-:tag - all projects by tag
  params:
 - tag - tag name
 
@@ -18,7 +18,7 @@ This is command line like website that I made in a few days. The pages are curre
  1) Install all dependencies
     Use `npm install`
  2) Add .env file
-    Creae new line named `.env`. The file should look like this:
+    Create new line named `.env`. The file should look like this:
     ```env
     WEBHOOK_ID = "id" 
     WEBHOOK_TOKEN = "token"
