@@ -4,15 +4,13 @@ My portfolio webiste.
 This is command line like website that I made in a few days. The pages are currently rendered cliet side using express.js. Please note that this is not a final version and I only show some of my projects.
 
 ## Endpoints
- - / - command line
- - /projects - projects
- - /projects/p-:project - project by name
- params:
- - project - project name, lower case and '-' without ' '
+ * / - command line
+ * /projects - projects
+ * /projects/p-:project - project by name, params:
+    - project - project name, lower case and '-' without ' '
 
- - /projects/t-:tag - all projects by tag
- params:
-- tag - tag name
+ * /projects/t-:tag - all projects by tag, params:
+    - tag - tag name
 
 ## How to build
  1) Install all dependencies
