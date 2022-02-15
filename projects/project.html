@@ -90,6 +90,7 @@
         .info-bar-subtitle {
             font-size: 1.1em;
             font-weight: bold;
+            margin-bottom: 0.3em;
         }
 
         .language {
@@ -133,7 +134,7 @@
             width: 70%;
         }
 
-        @media screen and (max-width: 760px) {
+        @media screen and (max-width: 900px) {
             #info-bar {
                 position: inherit;
                 border: var(--text-color) solid 1px;
@@ -146,6 +147,12 @@
 
             .footer-images > img {
                 width: 100%;
+            }
+        }
+
+        @media screen and (min-width: 900px) {
+            #info-bar {
+                padding-right: 1em;
             }
         }
     </style>
@@ -211,7 +218,7 @@
         </div>
     </template>
     <template name="language-template">
-        <span class="language link" url="">
+        <span class="language">
         </span>
     </template>
     <template name="tag-template">
@@ -258,7 +265,7 @@
                 const languageTemplate = document.querySelector('template[name="language-template"]');
                 const languageElement = languageTemplate.content.cloneNode(true);
                 languageElement.querySelector('.language').innerText = language;
-                languageElement.querySelector('.language').setAttribute('url', './languages#' + language);
+                // TODO languageElement.querySelector('.language').setAttribute('url', './languages#' + language);
                 document.querySelector('#languages').appendChild(languageElement);
             });
         } else {
