@@ -382,6 +382,9 @@ var commands = [
         window.open("https://github.com/PanJohnny", "_blank");
         return "Opened GitHub page";
     }, "github", "Opens my GitHub page"),
+    new Command("socials", (args) => {
+        window.open("./socials", "_blank");
+    }, "socials", "Opens my socials page"),
 ];
 
 initFs()

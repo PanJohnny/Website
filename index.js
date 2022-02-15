@@ -74,4 +74,8 @@ app.get("/script.js", (req, res) => {
     res.sendFile(__dirname + "/script.js")
 })
 
+app.get("/socials", (req, res) => {
+    res.sendFile(__dirname + "/html/socials.html")
+})
+
 app.listen(process.env.PORT || 8080, () => console.log(`Loaded!`))

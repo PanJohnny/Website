@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="/favicon.png" type="image/png">
+
+    <!-- Primary Meta Tags -->
+    <title>Socials | PanJohnny</title>
+    <meta name="title" content="Socials | PanJohnny">
+    <meta name="description" content="Programmer that likes cats and dogs.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://panjohnny.vercel.app/">
+    <meta property="og:title" content="Socials | PanJohnny">
+    <meta property="og:description" content="Programmer that likes cats and dogs.">
+    <meta property="og:image" content="/favicon.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://panjohnny.vercel.app/">
+    <meta property="twitter:title" content="Socials | PanJohnny">
+    <meta property="twitter:description" content="Programmer that likes cats and dogs.">
+    <meta property="twitter:image" content="/favicon.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+        :root {
+            --text-color: rgb(0, 0, 0);
+            --background-color: rgb(218, 218, 218);
+            --decoration-color: rgb(67, 67, 67);
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+        }
+
+        header {
+            padding-bottom: 2em;
+            text-align: center;
+        }
+
+        .socials {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2em;
+        }
+
+        .social {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            padding: 0.5em;
+            border: var(--text-color) solid 1px;
+            border-radius: 0.2em;
+            position: relative;
+            width: 90%;
+            margin-bottom: 2em;
+        }
+
+        .link {
+            cursor: pointer;
+        }
+
+        .name {
+            font-size: 1.5em;
+        }
+
+        .icon {
+            width: 1.2em;
+            height: 1.2em;
+            position: relative;
+            top: 0.15em;
+        }
+    </style>
+
+    <script src="https://kit.fontawesome.com/dd0d559326.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Socials</h1>
+        <hr>
+    </header>
+
+    <div class="socials">
+        <div class="social link" url="https://discord.gg/aDABMfwyj8">
+            <div class="name"><i class="fab fa-discord"></i>
+                Discord </div>
+            <hr>
+            <div class="description">Join my discord server <b>PanJohnny's nerd launge</b> to recive new informations and chat with me. This server is made for nerds.</div>
+        </div>
+
+        <div class="social link" url="https://github.com/PanJohnny">
+            <div class="name"><i class="fab fa-github"></i>
+                Github </div>
+            <hr>
+            <div class="description">Check my GitHub for other cool opensource projects.</div>
+        </div>
+
+        <div class="social link" url="https://modrinth.com/user/DtmwIakR">
+            <div class="name"><img src="https://avatars.githubusercontent.com/u/67560307?s=280&v=4" alt="Modrinth Icon" class="icon">
+                Modrinth </div>
+            <hr>
+            <div class="description">Check my Modrinth for other mods.</div>
+        </div>
+
+        <div class="social link" url="https://twitter.com/PanJohnny1">
+            <div class="name"> <i class="fab fa-twitter"></i>
+                Twitter </div>
+            <hr>
+            <div class="description">Check my Twitter <b>@PanJohnny1</b></div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                window.open(link.getAttribute('url'), '_blank');
+            });
+        });
+    </script>
+</body>
+
+</html>
