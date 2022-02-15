@@ -1,0 +1,54 @@
+{
+    "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/share-your-work/public-domain/cc0/"
+    },
+    "github": {
+        "name": "Coming Soon",
+        "url": "/"
+    },
+    "tags": [
+        "misc",
+        "minecraft",
+        "fabricmc",
+        "mod"
+    ],
+    "languages": [
+        "Java"
+    ],
+    "description": "Mod that lets you copy stuff.",
+    "name": "PJUtils",
+    "links": [
+        {
+            "name": "Modrinth",
+            "url": "https://www.modrinth.com/mod/pjutils",
+            "icon": "fa fa-download"
+        }
+    ],
+    "body": {
+        "categories": [
+            {
+                "name": "About",
+                "content": "PJUtils is mod that lets you copy information such as experience level. It is made for Minecraft 1.18 and requires fabric mod loader. You will also need fabric api to run the mod and for in-game configuration you will need cloth config API. The code is not currently on GitHub because I am dumb and git reset --hard it. I will try to revert that and publish my code soon."
+            },
+            {
+                "name": "Showcase",
+                "content": "Here are some images I took. I hope you like them.",
+                "footerImages": [
+                    {
+                        "url": "https://imgur.com/mHwldDz.png",
+                        "alt": "Screenshot of minecraft showing the screen when you copy stuff."
+                    },
+                    {
+                        "url": "https://imgur.com/upEoxa3.png",
+                        "alt": "Screenshot of pause menu in minecraft showing buttons that will open the menu."
+                    },
+                    {
+                        "url":  "https://imgur.com/waejWmu.png",
+                        "alt": "Screenshot of the configuration menu."
+                    }
+                ]
+            }
+        ]
+    }
+}
