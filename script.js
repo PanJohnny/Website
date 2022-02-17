@@ -258,6 +258,12 @@ var commands = [
         if (args.length == 0) {
             return "!No file specified";
         }
+
+        if(easterEgg(args[0])){
+            // checkout my cats instagram random coder https://www.instagram.com/lillythecat_meow/ please don't steal my cat
+            window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank", "fullscreen=yes,titlebar=no,width=1920,height=1080");
+            return "Oww you found an easter egg!";
+        }
         var file = directory.getChild(args[0]);
         if (file == null) {
             return "!File not found";
@@ -385,6 +391,28 @@ var commands = [
     new Command("socials", (args) => {
         window.open("./socials", "_blank");
     }, "socials", "Opens my socials page"),
+    
+    new Command("eval", (args) => {
+        if (args.length < 1) {
+            return "!Not enough arguments, please see usage"
+        }
+        var input = "";
+        for (var i = 0; i < args.length; i++) {
+            input += args[i] + " ";
+        }
+
+        var output;
+        try {
+            output = eval(input);
+        } catch (e) {
+            output = "!" + e;
+        }
+
+        if (!output) {
+            return "Executed without output";
+        }
+        return output;
+    }, "eval [code]", "Executes JavaScript code"),
 ];
 
 initFs()
@@ -414,8 +442,14 @@ function initFs() {
         return "Twitter: @PanJohnny1\nGitHub: @PanJohnny\nDiscord: @PanJohnny#5594";
     })
 
+    documents.createChildFile("project.txt", () => {
+        return "This is my project page. I'm working on it. There are few endpoints /docs, /socials, /projects. Thank you for visiting.";
+    })
+
     directory = panjohnny;
 }
+
+// Hello someone who is reading this bad source code :) I hope you enjoy it.
 // on keypress append to line
 document.querySelector('body').addEventListener('keypress', async function (e) {
     if (e.keyCode == 13) {
@@ -608,3 +642,9 @@ document.getElementById("switch").addEventListener("click", function () {
 });
 
 setInterval(updateCursor, 500);
+
+function easterEgg(string) {
+    if(string == "cat") {
+        return true;
+    }
+}
