@@ -642,8 +642,13 @@ async function matchCommand() {
             break;
         }
     }
+    
     var div = document.createElement('div');
     div.style.color = 'white';
+
+    if (!output) {
+        output = "!Invalid command, use 'help' to see all commands";
+    }
 
     // check if output is promise
     if (output instanceof Promise) {
@@ -654,10 +659,6 @@ async function matchCommand() {
         output = asd;
     } else if (typeof output == 'object') {
         output = JSON.stringify(output);
-    }
-
-    if (!output) {
-        output = "!Invalid command, use 'help' to see all commands";
     }
 
     if(!(output instanceof String)) {
