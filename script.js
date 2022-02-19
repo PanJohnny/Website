@@ -187,7 +187,7 @@ var commands = [
         for (var i = 0; i < commands.length; i++) {
             output += commands[i].toString() + "\n\n";
         }
-        return output;
+        return output + "\n\n\nFlags: \n-copy: copies output to clipboard";
     }, "help", "Displays all commands"),
     new Command("open", (args) => {
         if (args.length == 0) {
@@ -260,7 +260,6 @@ var commands = [
         }
 
         if(easterEgg(args[0])){
-            // checkout my cats instagram random coder https://www.instagram.com/lillythecat_meow/ please don't steal my cat
             window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank", "fullscreen=yes,titlebar=no,width=1920,height=1080");
             return "Oww you found an easter egg!";
         }
@@ -390,8 +389,8 @@ var commands = [
     }, "github", "Opens my GitHub page"),
     new Command("socials", (args) => {
         window.open("./socials", "_blank");
+        return "Opened socials page";
     }, "socials", "Opens my socials page"),
-    
     new Command("eval", (args) => {
         if (args.length < 1) {
             return "!Not enough arguments, please see usage"
@@ -413,6 +412,34 @@ var commands = [
         }
         return output;
     }, "eval [code]", "Executes JavaScript code"),
+    new Command("base64", (args) => {
+        if(args.length<2) {
+            return "!Not enough arguments, please see usage"
+        }
+        var type = args[0];
+        if(type.toLowerCase() == "encode") {
+            var input = "";
+            for(var i = 1; i<args.length; i++) {
+                input += args[i] + " ";
+            }
+            try {
+                return btoa(input);
+            } catch (e) {
+                return "!" + e;
+            }
+        } else if(type.toLowerCase() == "decode") {
+            var input = "";
+            for(var i = 1; i<args.length; i++) {
+                input += args[i] + " ";
+            }
+            try {
+                return atob(input);
+            } catch (e) {
+                return "!" + e;
+            }
+        }
+        return "!Invalid input!";
+    }, "base64 [encode/decode] [string]", "Encodes/decodes a string to/from base64"),
 ];
 
 initFs()
@@ -541,7 +568,6 @@ document.querySelector('body').addEventListener('keydown', async function (e) {
 
         updateCursor()
     }
-
 });
 
 document.querySelector(".phoneswitch").addEventListener("click", (a) => {
@@ -583,13 +609,27 @@ function updateCursor() {
     }
 }
 
+const flags = ["-copy"]
 async function matchCommand() {
     // get latest text text
     var text = document.querySelector('.current').querySelector('.text').innerText;
     // split text into array of words spaces
     var args = text.split(' ');
-    // get first word
-    var command = args[0];
+
+    var nargs = [];
+    var fp = [];
+    // if there is flag in args then remove it from args
+    // loop throught args
+    for (var i = 0; i < args.length; i++) {
+        // if flag is found remove this flag from args
+        if (!flags.includes(args[i]))
+            nargs.push(args[i]);
+        else {
+            fp.push(args[i]);
+        }
+    }
+
+    args = nargs;
 
     var output = null;
 
@@ -612,15 +652,32 @@ async function matchCommand() {
             asd = result;
         });
         output = asd;
+    } else if (typeof output == 'object') {
+        output = JSON.stringify(output);
     }
+
     if (!output) {
-        output = "Invalid command, use 'help' to see all commands";
-        div.style.color = 'red';
+        output = "!Invalid command, use 'help' to see all commands";
+    }
+
+    if(!(output instanceof String)) {
+        output = output.toString();
     }
 
     if (output.indexOf("!") == 0) {
         output = output.substring(1);
         div.style.color = 'red';
+    } else {
+        // if args contain -copy then copy output to clipboard
+        if (fp.indexOf('-copy') != -1) {
+            // copy output using textarea trick
+            var textarea = document.createElement('textarea');
+            textarea.value = output;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        }
     }
     div.innerText = output;
     document.querySelector('.container').appendChild(div);
