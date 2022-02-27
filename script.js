@@ -657,8 +657,14 @@ async function matchCommand() {
             asd = result;
         });
         output = asd;
-    } else if (typeof output == 'object') {
+    }
+    
+    if (typeof output == 'object') {
+        try {
         output = JSON.stringify(output);
+        } catch (e) {
+            output = "(object) " + output;
+        }
     }
 
     if(!(output instanceof String)) {
