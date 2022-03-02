@@ -113,4 +113,8 @@ app.get("/about", (req, res) => {
 
         if(!botCheck()) {setTimeout(() => {window.location.href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"}, 500)}</script> <body><h1>About me</h1></body>`)
 })
+
+app.get("/aeo", (req, res) => {
+    res.redirect("https://youtu.be/f488uJAQgmw");
+})
 app.listen(process.env.PORT || 8080, () => console.log(`Loaded!`))
