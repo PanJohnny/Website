@@ -1,0 +1,49 @@
+{
+    "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/share-your-work/public-domain/cc0/"
+    },
+    "github": {
+        "name": "PanJohnny/NoArrowsInYou",
+        "url": "https://github.com/PanJohnny/NoArrowsInYou"
+    },
+    "tags": [
+        "misc",
+        "minecraft",
+        "fabricmc",
+        "mod"
+    ],
+    "languages": [
+        "Java"
+    ],
+    "description": "Minecraft modification that lets you toggle various layers on your player",
+    "name": "No Arrows In You - NAIY",
+    "links": [
+        {
+            "name": "Modrinth",
+            "url": "https://www.modrinth.com/mod/naiy",
+            "icon": "fa fa-download"
+        },
+        {
+            "name": "CurseForge",
+            "url": "https://www.curseforge.com/minecraft/mc-mods/no-arrows-in-you",
+            "icon": "fa fa-download"
+        }
+    ],
+    "body": {
+        "categories": [
+            {
+                "name": "Dependencies",
+                "content": "My mod requires you to have installed fabric api and modmenu for any configuration."
+            },
+            {
+                "name": "About",
+                "content": "Using few mixins there will no longer be arrows or any other toggleable features rendered. For fun I have also included player resizing, because why not."
+            },
+            {
+                "name": "Features",
+                "content": " - Resize player<br>                - Hide armor<br>                - Hide elytra<br>                - Hide riptide<br>                - Hide held item<br>                - Hide block or item on head<br>                - Hide parrot on shoulder<br>                - Hide player completely<br>                - Hide hands in first person<br>                - And more"
+            }
+        ]
+    }
+}
