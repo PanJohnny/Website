@@ -1,7 +1,7 @@
 # Website
 My portfolio webiste.
 
-This is command line like website that I made in a few days. The pages are currently rendered cliet side using express.js. Please note that this is not a final version and I only show some of my projects.
+This is command line like website that I made in a few days. Please note that this is not a final version and I only show some of my projects. The website is created using express.js.
 
 ## Endpoints
  * / - command line
@@ -21,6 +21,7 @@ This is command line like website that I made in a few days. The pages are curre
     WEBHOOK_ID = "id" 
     WEBHOOK_TOKEN = "token"
     ```
+    **NOTE**: the webhook stuff is not working
 3) Run
     Now you can run the page usign `node .`
 
